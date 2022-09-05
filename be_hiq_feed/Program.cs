@@ -7,7 +7,15 @@ XmlReader reader = XmlReader.Create(url);
 SyndicationFeed feed = SyndicationFeed.Load(reader);
 reader.Close();
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options => {
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy => {
+        policy.WithOrigins("http://localhost:3000", "http://localhost:8080")
+        .AllowAnyHeader()
+        .AllowAnyMethod(); ;
+    });
+});
 var app = builder.Build();
 
 app.MapGet("/", () => {
@@ -26,7 +34,10 @@ app.MapGet("/items", () => {
         Article article = new Article();
         article.id = item.Id;
         article.title = item.Title.Text;
-        article.summary = item.Summary.Text;
+        string[] words = item.Summary.Text.Split('"');
+        string[] summary = words[4].Split('>');
+        article.imageUrl = words[1];
+        article.description = summary[2];
         article.publishDate = item.PublishDate;
         /*
         foreach (SyndicationCategory attribute in item.Categories) {
@@ -39,6 +50,8 @@ app.MapGet("/items", () => {
 
     return articles;
 });
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
 
