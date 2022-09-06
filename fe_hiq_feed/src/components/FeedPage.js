@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ArticleCard from "./ArticleCard";
-import Masonry from 'react-masonry-css';
-import {arrayMoveImmutable} from 'array-move';
+import Masonry from "react-masonry-css";
+import { arrayMoveImmutable } from "array-move";
 
 const FeedPage = () => {
   const [articleList, setArticleList] = useState([]);
@@ -16,34 +16,42 @@ const FeedPage = () => {
       articles.push(responseAsJson[i]);
     }
     setArticleList(articles);
-  }
+  };
 
   useEffect(() => {
     getArticles();
   }, []);
 
   useEffect(() => {
+    //Interval for updating the articleList array
     const interval = setInterval(() => {
-      let newArticleList = [...articleList]
+      //Move the first 4 items to the end of the array
+      let newArticleList = [...articleList];
       for (let i = 0; i < 4; i++) {
         newArticleList = arrayMoveImmutable(newArticleList, 0, -1);
       }
+
       setArticleList(newArticleList);
-    }, 10000);
+    }, 20000);
 
     return () => clearInterval(interval);
   }, [articleList]);
 
+  //Number of columns depending on screen width
   const breakpointColumnsObj = {
     default: 4,
     1700: 3,
     1300: 2,
-    860: 1
+    860: 1,
   };
 
   return (
     <>
-      <Masonry breakpointCols={breakpointColumnsObj} className="masonry-grid" columnClassName="masonry-grid-column">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="masonry-grid"
+        columnClassName="masonry-grid-column"
+      >
         {articleList.map((article) => (
           <ArticleCard key={article.id} article={article} />
         ))}

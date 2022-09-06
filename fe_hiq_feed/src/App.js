@@ -17,15 +17,16 @@ const App = () => {
 
   return (
     <>
-      {feedLoaded ? 
+      {feedLoaded ? (
         <div className="feed-page">
           <FloatingTextBar />
           <FeedPage />
-        </div> : 
+        </div>
+      ) : (
         <div className="video-page">
           <FlagPage />
         </div>
-      }
+      )}
     </>
   );
 };
