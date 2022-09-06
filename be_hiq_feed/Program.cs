@@ -1,10 +1,16 @@
 using System.Xml;
+using System.Collections.Generic;
 using System.ServiceModel.Syndication;
 using Newtonsoft.Json;
 
-string url = "http://www.idg.se/rss/100+senaste?noredirect=true";
-XmlReader reader = XmlReader.Create(url);
-SyndicationFeed feed = SyndicationFeed.Load(reader);
+string url100 = "http://www.idg.se/rss/100+senaste?noredirect=true";
+XmlReader reader = XmlReader.Create(url100);
+SyndicationFeed feed100 = SyndicationFeed.Load(reader);
+reader.Close();
+
+string urlLatest = "http://www.idg.se/rss/nyheter?noredirect=true";
+reader = XmlReader.Create(urlLatest);
+SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
 reader.Close();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -19,18 +25,18 @@ builder.Services.AddCors(options => {
 var app = builder.Build();
 
 app.MapGet("/", () => {
-    return feed;
+    return feed100;
 });
 
 app.MapGet("/feed-info", () => {
-    return feed.Description.Text;
+    return feed100.Description.Text;
 });
 
 app.MapGet("/items", () => {
 
     List<Article> articles = new List<Article>();
 
-    foreach (SyndicationItem item in feed.Items) {
+    foreach (SyndicationItem item in feed100.Items) {
         Article article = new Article();
         article.id = item.Id;
         article.title = item.Title.Text;
@@ -39,11 +45,12 @@ app.MapGet("/items", () => {
         article.imageUrl = words[1];
         article.description = summary[2];
         article.publishDate = item.PublishDate;
-        /*
+
+        article.category = new List<string>();
         foreach (SyndicationCategory attribute in item.Categories) {
             article.category.Add(attribute.Name);
         }
-        */
+        
 
         articles.Add(article);
     }
@@ -51,14 +58,23 @@ app.MapGet("/items", () => {
     return articles;
 });
 
+app.MapGet("/latest", () => {
+    List<Headline> headlines = new List<Headline>();
+
+    foreach (SyndicationItem item in feedLatest.Items) {
+        Headline headline = new Headline();
+        headline.id = item.Id;
+        headline.title = item.Title.Text;
+        string[] words = item.Summary.Text.Split('"');
+        string[] summary = words[4].Split('>');
+        headline.description = summary[2];
+
+        headlines.Add(headline);
+    }
+
+    return headlines;
+});
+
 app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
-
-/*
-string json = JsonConvert.SerializeObject(new {
-    articleList = new List<Article>() {
-        new Article { id = 1, title = "ABC", description = "ABC", pubDate = "Mon, 5 Sep 2022 11:32:59" }
-    }
-});
-*/
