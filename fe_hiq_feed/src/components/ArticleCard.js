@@ -3,19 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons'
 
 const ArticleCard = (props) => {
-  /*  
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max, min)) + min;
-  }
-
-  let randomCardHeight = getRandomInt(10, 20);
-
-  const randomCardStyle = {
-    height: "",
-  };
-
-  randomCardStyle.height = randomCardHeight.toString();
-  */
+    
   const dateStr = props.article.publishDate;
   const dateStrArr = dateStr.split("T");
   const timeStr = dateStrArr[1];
