@@ -58,6 +58,21 @@ app.MapGet("/items", () => {
     return articles;
 });
 
+app.MapGet("/categories", () => {
+
+    List<string> categories = new List<string>();
+
+    foreach (SyndicationItem item in feed100.Items) {
+        foreach (SyndicationCategory attribute in item.Categories) {
+            categories.Add(attribute.Name);
+        }
+    }
+
+    categories = categories.Distinct().ToList();
+
+    return categories;
+});
+
 app.MapGet("/latest", () => {
     List<Headline> headlines = new List<Headline>();
 
