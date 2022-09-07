@@ -20,7 +20,7 @@ const ArticleCard = (props) => {
         <div className="article-description">{props.article.description}</div>
         <div className="article-bottom">
             <div className="article-tag-group">
-                <FontAwesomeIcon icon={faHashtag} />
+                <FontAwesomeIcon icon={faHashtag} className="fa-hash-icon" />
                 {uniqueCategories.map((category) => (
                     <div className="article-tag">{category}</div>
                 ))}

@@ -4,20 +4,20 @@ import FlagPage from "./components/FlagPage";
 import { useState, useEffect } from "react";
 
 const App = () => {
-  const [feedLoaded, setFeedLoaded] = useState(true);
+  const [showFeed, setShowFeed] = useState(true);
 
   //Interval for changing pages every 5 minutes
   useEffect(() => {
     const interval = setInterval(() => {
-      setFeedLoaded(!feedLoaded);
+      setShowFeed(!showFeed);
     }, 300000);
 
     return () => clearInterval(interval);
-  }, [feedLoaded]);
+  }, [showFeed]);
 
   return (
     <>
-      {feedLoaded ? (
+      {showFeed ? (
         <div className="feed-page">
           <FloatingTextBar />
           <FeedPage />

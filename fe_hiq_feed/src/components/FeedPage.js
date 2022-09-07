@@ -48,7 +48,7 @@ const FeedPage = () => {
   return (
     <>
       <Masonry
-        breakpointCols={breakpointColumnsObj}
+        breakpointCols="4"
         className="masonry-grid"
         columnClassName="masonry-grid-column"
       >
