@@ -7,7 +7,7 @@ const App = () => {
   const [showFeed, setShowFeed] = useState(true);
 
   //Timer variable for how long the feed and flag page are visible
-  //Currently set at 8min (feed) and 4min (flag)
+  //Currently set at 8min (feed) and 1min (flag)
   let timer = 0;
   if (showFeed) {
     timer = 480000;
@@ -22,7 +22,7 @@ const App = () => {
     }, timer);
 
     return () => clearInterval(interval);
-  }, [showFeed]);
+  }, [showFeed, timer]);
 
   return (
     <>
