@@ -1,14 +1,41 @@
+import { useState } from "react";
 import missingImage from '../assets/image/image-missing.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons'
 
 const ArticleCard = (props) => {
+  const [containsKeyword, setContainsKeyword] = useState(false);
 
   //Formatting the publishDate and separating into date and time  
   const dateStr = props.article.publishDate;
   const dateStrArr = dateStr.split("T");
   const timeStr = dateStrArr[1];
   const timeStrArr = timeStr.split("+");
+
+  //Deciding keywords to search for
+  const chosenKeywords = [
+    "HiQ",
+    "hiq",
+    "HIQ",
+  ]
+
+  //Separating words in article title and checking if keywords are present
+  const titleWords = props.article.title.split(" ");
+  for (let i = 0; i < titleWords.length; i++) {
+    if (chosenKeywords.includes(titleWords[i])) {
+      console.log("chosen keyword found in title: " + props.article.title)
+      //setContainsKeyword(true);
+    }
+  }
+
+  //Separating words in article description and checking if keywords are present
+  const descriptionWords = props.article.description.split(" ");
+  for (let i = 0; i < descriptionWords.length; i++) {
+    if (chosenKeywords.includes(descriptionWords[i])) {
+      console.log("chosen keyword found in description")
+      //setContainsKeyword(true);
+    }
+  }
 
   //Relevant categories
   const relevantCategories = [
@@ -20,7 +47,6 @@ const ArticleCard = (props) => {
     "MacWorld",
     "CS Bransch",
     "Apple",
-    "Mobiltelefon",
     "Plusbox",
     "Ljud & Bild",
     "Internet/Webbtjänster",

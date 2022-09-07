@@ -30,7 +30,6 @@ const FeedPage = () => {
     for (let i = 0; i < responseAsJson.length; i++) {
       categories.push(responseAsJson[i]);
     }
-    console.log(categories)
     setCategoryList(categories);
   }
 
