@@ -42,7 +42,6 @@ app.MapGet("/items", () => {
         article.title = item.Title.Text;
         string[] words = item.Summary.Text.Split('"');
         string[] summary = item.Summary.Text.Split('>');
-        //string[] summary = words[4].Split('>');
         article.imageUrl = words[1];
         article.description = summary.Last();
         article.publishDate = item.PublishDate;
