@@ -4,6 +4,7 @@ import Marquee from "react-fast-marquee";
 const FloatingTextBar = () => {
     const [headlineList, setHeadlineList] = useState([]);
 
+    //Fetch headlines from backend and populate the headlines array
     const getHeadlines = async () => {
         let headlines = []
 

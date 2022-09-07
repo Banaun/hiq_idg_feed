@@ -5,7 +5,9 @@ import { arrayMoveImmutable } from "array-move";
 
 const FeedPage = () => {
   const [articleList, setArticleList] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
 
+  //Fetch articles from backend and populate the articleList
   const getArticles = async () => {
     let articles = [];
 
@@ -18,13 +20,29 @@ const FeedPage = () => {
     setArticleList(articles);
   };
 
-  useEffect(() => {
-    getArticles();
-  }, []);
+  //Fetch categories from backend and populate the categoryList
+  const getCategories = async () => {
+    let categories = [];
+
+    let url = "https://localhost:7293/categories";
+    let response = await fetch(url);
+    let responseAsJson = await response.json();
+    for (let i = 0; i < responseAsJson.length; i++) {
+      categories.push(responseAsJson[i]);
+    }
+    console.log(categories)
+    setCategoryList(categories);
+  }
 
   useEffect(() => {
-    //Interval for updating the articleList array
+    getArticles();
+    getCategories();
+  }, []);
+
+  //Interval for updating the articleList array
+  useEffect(() => {
     const interval = setInterval(() => {
+
       //Move the first 4 items to the end of the array
       let newArticleList = [...articleList];
       for (let i = 0; i < 4; i++) {
@@ -37,6 +55,7 @@ const FeedPage = () => {
     return () => clearInterval(interval);
   }, [articleList]);
 
+  /*
   //Number of columns depending on screen width
   const breakpointColumnsObj = {
     default: 4,
@@ -44,6 +63,7 @@ const FeedPage = () => {
     1300: 2,
     860: 1,
   };
+  */
 
   return (
     <>
@@ -53,7 +73,7 @@ const FeedPage = () => {
         columnClassName="masonry-grid-column"
       >
         {articleList.map((article) => (
-          <ArticleCard key={article.id} article={article} />
+          <ArticleCard key={article.id} article={article} categories={categoryList} />
         ))}
       </Masonry>
     </>

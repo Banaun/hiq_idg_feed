@@ -6,11 +6,20 @@ import { useState, useEffect } from "react";
 const App = () => {
   const [showFeed, setShowFeed] = useState(true);
 
-  //Interval for changing pages every 5 minutes
+  //Timer variable for how long the feed and flag page are visible
+  //Currently set at 8min (feed) and 4min (flag)
+  let timer = 0;
+  if (showFeed) {
+    timer = 480000;
+  } else {
+    timer = 60000;
+  }
+
+  //Interval for changing view between feed and flag page
   useEffect(() => {
     const interval = setInterval(() => {
       setShowFeed(!showFeed);
-    }, 300000);
+    }, timer);
 
     return () => clearInterval(interval);
   }, [showFeed]);
