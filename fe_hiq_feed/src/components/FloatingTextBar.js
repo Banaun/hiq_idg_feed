@@ -24,7 +24,14 @@ const FloatingTextBar = () => {
     return (
         <Marquee className="floating-text" gradient={false} speed="10">
             {headlineList.map((headline) => (
-                <p key={headline.id}>{headline.title}&nbsp;&nbsp;{"|"}&nbsp;&nbsp;</p>
+                <>
+                {headline.containsKeyword 
+                    ? 
+                    <p className="headline-important" key={headline.id}>{headline.title}&nbsp;&nbsp;{"|"}&nbsp;&nbsp;</p> 
+                    :
+                    <p className="headline" key={headline.id}>{headline.title}&nbsp;&nbsp;{"|"}&nbsp;&nbsp;</p>
+                }
+                </>
             ))}
         </Marquee>
     )
