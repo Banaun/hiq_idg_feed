@@ -13,6 +13,8 @@ reader = XmlReader.Create(urlLatest);
 SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
 reader.Close();
 
+string chosenKeyword = "hiq";
+
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options => {
@@ -50,8 +52,14 @@ app.MapGet("/items", () => {
         foreach (SyndicationCategory attribute in item.Categories) {
             article.category.Add(attribute.Name);
         }
-        
 
+        if (article.title.Contains(chosenKeyword, System.StringComparison.CurrentCultureIgnoreCase) || 
+                article.description.Contains(chosenKeyword, System.StringComparison.CurrentCultureIgnoreCase)) {
+            article.containsKeyword = true;
+        } else {
+            article.containsKeyword = false;
+        }
+        
         articles.Add(article);
     }
 
@@ -83,6 +91,13 @@ app.MapGet("/latest", () => {
         string[] words = item.Summary.Text.Split('"');
         string[] summary = words[4].Split('>');
         headline.description = summary[2];
+
+        if (headline.title.Contains(chosenKeyword, System.StringComparison.CurrentCultureIgnoreCase) || 
+                headline.description.Contains(chosenKeyword, System.StringComparison.CurrentCultureIgnoreCase)) {
+            headline.containsKeyword = true;
+        } else {
+            headline.containsKeyword = false;
+        }
 
         headlines.Add(headline);
     }
