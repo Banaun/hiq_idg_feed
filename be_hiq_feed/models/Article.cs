@@ -5,6 +5,8 @@
         public string imageUrl { get; set; }
         public string description { get; set; }
         public DateTimeOffset publishDate { get; set; }
+        public string date { get; set; }
+        public string time { get; set; }
         public List<string> category { get; set; }
     }
 
