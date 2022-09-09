@@ -80,6 +80,10 @@ app.MapGet("/items", () => {
             article.containsKeyword = false;
         }
         
+        //Set article size relative to length of title and description
+        article.titleSize = article.title.Length;
+        article.descriptionSize = article.description.Length;
+
         articles.Add(article);
     }
 
