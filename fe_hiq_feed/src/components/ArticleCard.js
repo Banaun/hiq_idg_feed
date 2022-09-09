@@ -1,75 +1,48 @@
 import missingImage from '../assets/image/image-missing.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHashtag } from '@fortawesome/free-solid-svg-icons'
 
 const ArticleCard = (props) => {
 
   /*
-  //Formatting the publishDate and separating into date and time  
-  const dateStr = props.article.publishDate;
-  const dateStrArr = dateStr.split("T");
-  const timeStr = dateStrArr[1];
-  const timeStrArr = timeStr.split("+");
-  */
-
-  /*
-  //Deciding keywords to search for
-  const chosenKeywords = [
-    "HiQ",
-    "hiq",
-    "HIQ",
-  ]
-  //Separating words in article title and checking if keywords are present
-  const titleWords = props.article.title.split(" ");
-  for (let i = 0; i < titleWords.length; i++) {
-    if (chosenKeywords.includes(titleWords[i])) {
-      console.log("chosen keyword found in title: " + props.article.title)
+  //Set height on article cards depending on title and description size
+  let heightStyle = {}
+  const articleSize = props.article.titleSize + props.article.descriptionSize
+  if (articleSize < 110) {
+    heightStyle = {
+      height: "9rem"
+    }
+  } else if (articleSize >= 110 && articleSize < 170) {
+    heightStyle = {
+      height: "10rem"
+    }
+  } else if (articleSize >= 170 && articleSize < 230) {
+    heightStyle = {
+      height: "11rem"
+    }
+  } else if (articleSize >= 230 && articleSize < 290) {
+    heightStyle = {
+      height: "12rem"
+    }
+  } else if (articleSize >= 290 && articleSize < 350) {
+    heightStyle = {
+      height: "13rem"
+    }
+  } else {
+    heightStyle = {
+      height: "14rem"
     }
   }
-  //Separating words in article description and checking if keywords are present
-  const descriptionWords = props.article.description.split(" ");
-  for (let i = 0; i < descriptionWords.length; i++) {
-    if (chosenKeywords.includes(descriptionWords[i])) {
-      console.log("chosen keyword found in description")
-    }
-  }
   */
 
-  //Relevant categories
+  //Relevant categories (only include sources)
   const relevantCategories = [
     "Computer Sweden",
     "Ekonomi/Bransch",
     "PC för Alla",
-    "Teknik",
     "M3",
     "MacWorld",
-    "CS Bransch",
-    "Apple",
-    "Plusbox",
-    "Ljud & Bild",
-    "Internet/Webbtjänster",
-    "Prylar & Tillbehör",
-    "Rykte",
-    "Hårdvara",
-    "Hemelektronik",
-    "Gadgets",
-    "Mjukvara",
-    "Motor",
-    "Film / Tv-serier",
-    "Mobilt/Handdator/Laptop",
-    "Underhållning/Spel",
-    "Forumtipset",
-    "Persondatorer",
-    "Medel",
-    "Datortillbehör",
     "CIO Sweden",
   ]
-
-  /*
-  //Removing duplicate categories
-  const uniqueCategories = [...new Set(props.article.category)]
-  */
-
+  
   //Formatting the categories to only include categories from relevantCategories array
   const categories = []
   for (let i = 0; i < props.article.category.length; i++) {
@@ -79,47 +52,22 @@ const ArticleCard = (props) => {
   }
 
   return (
-    <>
-      {props.article.containsKeyword ? 
-        <div className="article-card-important">
-          <img className="article-image" src={props.article.imageUrl} alt={missingImage}/>
-          <div className="article-textbox">
-            <div className="article-title">{props.article.title}</div>
-            <div className="article-description">{props.article.description}</div>
-            <div className="article-bottom">
-              <div className="article-tag-group">
-                <FontAwesomeIcon icon={faHashtag} className="fa-hash-icon" />
-                {categories.map((category, index) => (
-                  <div className="article-tag" key={index}>{category}</div>
-                ))}
-              </div>
-              <div className="article-publish-group">
-                <div className="article-publish-date">{props.article.date}</div>
-                <div className="article-publish-time">{props.article.time}</div>
-              </div>
-            </div>
+    <div className={props.article.containsKeyword ? "article-card-important" : "article-card"}>
+      <img className="article-image" src={props.article.imageUrl} alt={missingImage}/>
+      <div className="article-textbox">
+        <div className="article-title">{props.article.title}</div>
+        <div className="article-description">{props.article.description}</div>
+        <div className="article-bottom">
+          {categories ? 
+            <div className="article-tag">Källa: {categories[0]} Size: {props.article.titleSize + props.article.descriptionSize}</div> : 
+            <div className="article-tag">Källa: IDG.se</div>
+          }
+          <div className="article-publish-group">
+            <div className="article-publish-date">{props.article.date}</div>
           </div>
-        </div> :
-        <div className="article-card">
-          <img className="article-image" src={props.article.imageUrl} alt={missingImage}/>
-          <div className="article-textbox">
-            <div className="article-title">{props.article.title}</div>
-            <div className="article-description">{props.article.description}</div>
-            <div className="article-bottom">
-              <div className="article-tag-group">
-                <FontAwesomeIcon icon={faHashtag} className="fa-hash-icon" />
-                {categories.map((category, index) => (
-                  <div className="article-tag" key={index}>{category}</div>
-                ))}
-              </div>
-              <div className="article-publish-group">
-                <div className="article-publish-date">{props.article.date}</div>
-                <div className="article-publish-time">{props.article.time}</div>
-              </div>
-            </div>
-          </div>
-        </div>}
-    </>
+        </div>
+      </div>
+    </div>
   );
 };
 

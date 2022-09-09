@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "MDPrimer-Regular";
+    src: url("./assets/fonts/MDPrimer-Regular.otf");
+}
+
+@font-face {
+    font-family: "MDPrimer-Medium";
+    src: url("./assets/fonts/MDPrimer-Medium.otf");
+}
+
+@font-face {
+    font-family: "MDPrimer-Light";
+    src: url("./assets/fonts/MDPrimer-Light.otf");
+}
+
+@font-face {
+    font-family: "MDPrimer-Bold";
+    src: url("./assets/fonts/MDPrimer-Bold.otf");
+}
+
+@font-face {
+    font-family: "MDPrimer-Semibold";
+    src: url("./assets/fonts/MDPrimer-Semibold.otf");
+}
+
+@font-face {
+    font-family: "MDPrimer-Black";
+    src: url("./assets/fonts/MDPrimer-Black.otf");
+}
