@@ -8,7 +8,7 @@ const FloatingTextBar = () => {
     const getHeadlines = async () => {
         let headlines = []
 
-        let url = "https://localhost:7293/latest";
+        let url = "http://localhost:5000/latest";
         let response = await fetch(url);
         let responseAsJson = await response.json();
         for (let i = 0; i < responseAsJson.length; i++) {
@@ -27,10 +27,11 @@ const FloatingTextBar = () => {
                 <>
                 {headline.containsKeyword 
                     ? 
-                    <p className="headline-important" key={headline.id}>{headline.title}&nbsp;&nbsp;{"|"}&nbsp;&nbsp;</p> 
+                    <p className="headline-important" key={headline.id}>{headline.title}</p> 
                     :
-                    <p className="headline" key={headline.id}>{headline.title}&nbsp;&nbsp;{"|"}&nbsp;&nbsp;</p>
+                    <p className="headline" key={headline.id}>{headline.title}</p>
                 }
+                <p>&nbsp;&nbsp;{"|"}&nbsp;&nbsp;</p>
                 </>
             ))}
         </Marquee>

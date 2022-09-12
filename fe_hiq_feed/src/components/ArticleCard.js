@@ -50,8 +50,7 @@ const ArticleCard = (props) => {
               <div className="article-bottom">
                 {categories ? (
                   <div className="article-tag">
-                    Källa: {categories[0]} Size:{" "}
-                    {props.article.titleSize + props.article.descriptionSize}
+                    Källa: {categories[0]}
                   </div>
                 ) : (
                   <div className="article-tag">Källa: IDG.se</div>

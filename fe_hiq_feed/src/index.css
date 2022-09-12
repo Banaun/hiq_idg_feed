@@ -13,7 +13,7 @@
 
 body {
   position: relative;
-  background-image: url(assets/image/pink_light_background_gradient.png);
+  background-image: url(assets/image/pink_light_background_gradient_flipped.png);
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
@@ -27,9 +27,6 @@ body {
   width: 100%;
 }
 
-.feed-page {
-}
-
 .masonry-grid {
   display: flex;
   width: auto;
@@ -39,6 +36,10 @@ body {
   width: 25%;
   margin-left: 1rem;
   background-clip: padding-box;
+}
+
+.headline-important {
+  font-family: "MDPrimer-Bold";
 }
 
 .article-card {
@@ -53,9 +54,6 @@ body {
   margin-bottom: 2rem;
   overflow: hidden;
   width: 23rem;
-  /*
-  animation: fadeIn 2s;
-  */
 }
 
 .article-card-important {
@@ -71,10 +69,7 @@ body {
   overflow: hidden;
   width: 23rem;
   transform: scale(1);
-  animation: pulse 6s infinite;
-  /*
-  animation: fadeIn 2s;
-  */
+  animation: pulse 5s infinite;
 }
 
 .article-image {

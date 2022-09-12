@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ArticleCard from "./ArticleCard";
-//import { arrayMoveImmutable } from "array-move";
 
 const FeedPage = () => {
   const [articleList, setArticleList] = useState([]);
@@ -10,7 +9,7 @@ const FeedPage = () => {
   const getArticles = async () => {
     let articles = [];
 
-    let url = "https://localhost:7293/items";
+    let url = "http://localhost:5000/items";
     let response = await fetch(url);
     let responseAsJson = await response.json();
     for (let i = 0; i < responseAsJson.length; i++) {
@@ -23,7 +22,7 @@ const FeedPage = () => {
   const getCategories = async () => {
     let categories = [];
 
-    let url = "https://localhost:7293/categories";
+    let url = "http://localhost:5000/categories";
     let response = await fetch(url);
     let responseAsJson = await response.json();
     for (let i = 0; i < responseAsJson.length; i++) {
@@ -40,13 +39,6 @@ const FeedPage = () => {
   //Interval for updating the articleList array
   useEffect(() => {
     const interval = setInterval(() => {
-      /*
-      //Move the first 4 items to the end of the array
-      let newArticleList = [...articleList];
-      for (let i = 0; i < 4; i++) {
-        newArticleList = arrayMoveImmutable(newArticleList, 0, -1);
-      }
-      */
 
       //Remove the first 4 items from articleList
       let newArticleList = [...articleList];
@@ -57,16 +49,6 @@ const FeedPage = () => {
 
     return () => clearInterval(interval);
   }, [articleList]);
-
-  /*
-  //Number of columns depending on screen width
-  const breakpointColumnsObj = {
-    default: 4,
-    1700: 3,
-    1300: 2,
-    860: 1,
-  };
-  */
 
   //Index from articleList in columns
   const firstColumn = [
