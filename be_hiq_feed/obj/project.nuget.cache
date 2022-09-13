@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yFt35xzTgckT1wi5QWRvBDzz6MBgyblxbhiG/soUI7lKRAqR257w+UJN9PR5NjlctVqAyMMnSYa4QZBIpifgVw==",
+  "dgSpecHash": "By/LxH0cms9S7OovcXDYeEx4gOjLhMBfmV/gc5j3wDdwSaZgcErE0jq8rXwvjV4MvHNYSxpv/ckdXUfNv17IvQ==",
   "success": true,
   "projectFilePath": "D:\\Coding\\Repos\\hiq_idg_feed\\be_hiq_feed\\be_hiq_feed.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,10 @@
     "C:\\Users\\emilm\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\emilm\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\emilm\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
-    "C:\\Users\\emilm\\.nuget\\packages\\system.servicemodel.syndication\\6.0.0\\system.servicemodel.syndication.6.0.0.nupkg.sha512"
+    "C:\\Users\\emilm\\.nuget\\packages\\system.servicemodel.syndication\\6.0.0\\system.servicemodel.syndication.6.0.0.nupkg.sha512",
+    "C:\\Users\\emilm\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.8\\microsoft.netcore.app.runtime.win-x86.6.0.8.nupkg.sha512",
+    "C:\\Users\\emilm\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.8\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.8.nupkg.sha512",
+    "C:\\Users\\emilm\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.8\\microsoft.aspnetcore.app.runtime.win-x86.6.0.8.nupkg.sha512"
   ],
   "logs": []
 }

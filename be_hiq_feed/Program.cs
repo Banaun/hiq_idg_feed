@@ -14,7 +14,7 @@ SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
 reader.Close();
 
 //Declare the keyword to search for in articles
-string chosenKeyword = "till";
+string chosenKeyword = "hiq";
 
 //Create builder and set cors allowance
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
