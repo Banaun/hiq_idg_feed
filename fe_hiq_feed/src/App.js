@@ -1,7 +1,6 @@
 import FeedPage from "./components/FeedPage";
 import FloatingTextBar from "./components/FloatingTextBar";
 import FlagPage from "./components/FlagPage";
-import FlagVideo from "./assets/video/hiq_pirate_flag.mp4"
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -34,7 +33,7 @@ const App = () => {
         </div>
       ) : (
         <div className="video-page">
-          <FlagPage flagVideo={FlagVideo}/>
+          <FlagPage />
         </div>
       )}
     </>
