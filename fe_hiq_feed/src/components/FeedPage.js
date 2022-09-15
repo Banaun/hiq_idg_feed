@@ -9,7 +9,7 @@ const FeedPage = () => {
   const getArticles = async () => {
     let articles = [];
 
-    let url = "http://localhost:5000/items";
+    let url = "https://behiqfeed.azurewebsites.net/items";
     let response = await fetch(url);
     let responseAsJson = await response.json();
     for (let i = 0; i < responseAsJson.length; i++) {

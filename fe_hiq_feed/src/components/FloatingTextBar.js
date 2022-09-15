@@ -8,7 +8,7 @@ const FloatingTextBar = () => {
     const getHeadlines = async () => {
         let headlines = []
 
-        let url = "http://localhost:5000/latest";
+        let url = "https://behiqfeed.azurewebsites.net/latest";
         let response = await fetch(url);
         let responseAsJson = await response.json();
         for (let i = 0; i < responseAsJson.length; i++) {
