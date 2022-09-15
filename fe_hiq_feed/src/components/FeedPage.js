@@ -10,7 +10,9 @@ const FeedPage = () => {
     let articles = [];
 
     let url = "https://behiqfeed.azurewebsites.net/items";
-    let response = await fetch(url);
+    let response = await fetch(url, {
+      mode: 'cors',
+    });
     let responseAsJson = await response.json();
     for (let i = 0; i < responseAsJson.length; i++) {
       articles.push(responseAsJson[i]);
