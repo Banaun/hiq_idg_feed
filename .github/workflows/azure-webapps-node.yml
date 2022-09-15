@@ -24,7 +24,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: fe_hiq_feed    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'fe_hiq_feed'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: './fe_hiq_feed/build'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '16.x'                # set this to the node version to use
 
 permissions:
@@ -47,6 +47,7 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
+      working-directory: './fe_hiq_feed'
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
@@ -57,6 +58,7 @@ jobs:
     - name: add process.json
       run: |
         echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> build/process.json
+      working-directory: './fe_hiq_feed'
 
   deploy:
     permissions:
