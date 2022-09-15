@@ -1,10 +1,8 @@
-import flagVideo from '../assets/video/hiq_pirate_flag.mp4'
-
-const FlagPage = () => {
+const FlagPage = (props) => {
     return (
         <div className="video-page">
             <video autoPlay loop muted id="video">
-                <source src={flagVideo} type="video/mp4"/>
+                <source src={props.flagVideo} type="video/mp4"/>
             </video>
         </div>
     )

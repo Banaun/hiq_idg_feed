@@ -1,6 +1,7 @@
 import FeedPage from "./components/FeedPage";
 import FloatingTextBar from "./components/FloatingTextBar";
 import FlagPage from "./components/FlagPage";
+import FlagVideo from "./assets/video/hiq_pirate_flag.mp4"
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -10,7 +11,7 @@ const App = () => {
   //Currently set at 8min (feed) and 1min (flag)
   let timer = 0;
   if (showFeed) {
-    timer = 480000;
+    timer = 10000;
   } else {
     timer = 60000;
   }
@@ -33,7 +34,7 @@ const App = () => {
         </div>
       ) : (
         <div className="video-page">
-          <FlagPage />
+          <FlagPage flagVideo={FlagVideo}/>
         </div>
       )}
     </>
