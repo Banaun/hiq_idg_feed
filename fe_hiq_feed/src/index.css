@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "MDPrimer-Regular", "Mulish";
+  font-family: url(assets/fonts/MDPrimer-Regular.otf), "Mulish";
   font-style: normal;
   font-size: 1vw;
 }
@@ -39,7 +39,7 @@ body {
 }
 
 .headline-important {
-  font-family: "MDPrimer-Bold";
+  font-family: url(assets/fonts/MDPrimer-Bold.otf);
 }
 
 .article-card {
@@ -85,7 +85,7 @@ body {
 
 .article-title {
   margin: 0.8rem 0.8rem;
-  font-family: "MDPrimer-Bold";
+  font-family: url(assets/fonts/MDPrimer-Bold.otf);
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.4rem;
