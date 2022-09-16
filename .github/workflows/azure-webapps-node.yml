@@ -48,8 +48,8 @@ jobs:
       
     - name: add process.json
       run: |
-        echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> build/process.json
-      working-directory: "fe_hiq_feed"
+        echo '{ script: "serve", env: { PM2_SERVE_SPA: "true" } }' >> build/process.json
+      working-directory: "fe_hiq_feed/build"
 
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
