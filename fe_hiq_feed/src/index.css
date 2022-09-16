@@ -2,6 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swa");
 @import "./typography.css";
 
+@font-face {
+  font-family: "mdprimer-regular";
+  src: url(assets/fonts/mdprimer-regular.otf);
+}
+
+@font-face {
+  font-family: "mdprimer-bold";
+  src: url(assets/fonts/mdprimer-bold.otf);
+}
+
 * {
   margin: 0;
   padding: 0;
