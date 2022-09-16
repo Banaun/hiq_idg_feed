@@ -43,19 +43,17 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
-        npm run build --if-present
-      working-directory: './fe_hiq_feed'
+        npm run build
+      working-directory: "fe_hiq_feed"
       
     - name: add process.json
       run: |
         echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> build/process.json
-      working-directory: './fe_hiq_feed'
+      working-directory: "fe_hiq_feed"
 
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
-        app_location: "fe_hiq_feed/src"
-        app_artifact_location: "fe_hiq_feed/build"
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
