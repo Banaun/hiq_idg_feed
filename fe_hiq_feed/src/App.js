@@ -10,7 +10,7 @@ const App = () => {
   //Currently set at 8min (feed) and 1min (flag)
   let timer = 0;
   if (showFeed) {
-    timer = 10000;
+    timer = 480000;
   } else {
     timer = 60000;
   }
