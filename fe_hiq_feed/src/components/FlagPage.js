@@ -1,4 +1,4 @@
-import FlagVideo from '../assets/video/hiq_pirate_flag.mp4'
+import FlagVideo from '../assets/video/test.mp4'
 
 const FlagPage = () => {
     return (
