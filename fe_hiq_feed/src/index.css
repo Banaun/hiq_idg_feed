@@ -16,7 +16,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "mdprimer-regular", "Mulish";
+  font-family: "mdprimer-regular", "Roboto";
   font-style: normal;
   font-size: 1vw;
 }
@@ -49,7 +49,8 @@ body {
 }
 
 .headline-important {
-  font-family: "mdprimer-bold";
+  font-family: "mdprimer-bold", "Roboto";
+  font-weight: 700;
 }
 
 .article-card {
@@ -95,7 +96,7 @@ body {
 
 .article-title {
   margin: 0.8rem 0.8rem;
-  font-family: "mdprimer-bold";
+  font-family: "mdprimer-bold", "Roboto";
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.4rem;
