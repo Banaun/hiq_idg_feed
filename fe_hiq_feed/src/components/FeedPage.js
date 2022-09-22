@@ -52,8 +52,7 @@ const FeedPage = () => {
       setArticleList(newArticleList);
       setShortArticleList(newArticleList.slice(0, 16));
 
-      console.log(newArticleList)
-    }, 20000);
+    }, 25000);
 
     return () => clearInterval(interval);
   }, [articleList]);

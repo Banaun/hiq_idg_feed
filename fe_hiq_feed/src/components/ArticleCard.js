@@ -28,7 +28,8 @@ const ArticleCard = (props) => {
           key={props.article.id}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ type: "spring", stiffness: 30 }}
+          transition={{ 
+            x: { type: "spring", stiffness: 30 }, duration: 0.8, delay: 0.2, }}
         >
           <div
             className={
