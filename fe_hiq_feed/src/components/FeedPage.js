@@ -3,6 +3,7 @@ import ArticleCard from "./ArticleCard";
 
 const FeedPage = () => {
   const [articleList, setArticleList] = useState([]);
+  const [shortArticleList, setShortArticleList] = useState([]);
   //const [categoryList, setCategoryList] = useState([]);
 
   //Fetch articles from backend and populate the articleList
@@ -18,6 +19,7 @@ const FeedPage = () => {
       articles.push(responseAsJson[i]);
     }
     setArticleList(articles);
+    setShortArticleList(articles.slice(0, 16));
   };
 
   /*
@@ -47,8 +49,10 @@ const FeedPage = () => {
       //Remove the first 4 items from articleList
       let newArticleList = [...articleList];
       newArticleList.splice(0, 4);
-
       setArticleList(newArticleList);
+      setShortArticleList(newArticleList.slice(0, 16));
+
+      console.log(newArticleList)
     }, 20000);
 
     return () => clearInterval(interval);
@@ -66,7 +70,7 @@ const FeedPage = () => {
   }
 
   //Create array with 100 numbers (0-99)
-  const articlesLengthArr = Array(100).fill().map((_, i) => i);
+  const articlesLengthArr = Array(16).fill().map((_, i) => i);
   //Populate first, second, third and fourth columns
   const firstColumn = getEveryNth(articlesLengthArr, 0, 4)
   const secondColumn = getEveryNth(articlesLengthArr, 1, 4)
@@ -76,7 +80,7 @@ const FeedPage = () => {
   return (
     <div className="masonry-grid">
       <div className="masonry-grid-column">
-        {articleList.map((article, index) => (
+        {shortArticleList.map((article, index) => (
           <ArticleCard
             key={article.id}
             article={article}
@@ -86,7 +90,7 @@ const FeedPage = () => {
         ))}
       </div>
       <div className="masonry-grid-column">
-        {articleList.map((article, index) => (
+        {shortArticleList.map((article, index) => (
           <ArticleCard
             key={article.id}
             article={article}
@@ -96,7 +100,7 @@ const FeedPage = () => {
         ))}
       </div>
       <div className="masonry-grid-column">
-        {articleList.map((article, index) => (
+        {shortArticleList.map((article, index) => (
           <ArticleCard
             key={article.id}
             article={article}
@@ -106,7 +110,7 @@ const FeedPage = () => {
         ))}
       </div>
       <div className="masonry-grid-column">
-        {articleList.map((article, index) => (
+        {shortArticleList.map((article, index) => (
           <ArticleCard
             key={article.id}
             article={article}

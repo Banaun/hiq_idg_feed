@@ -26,9 +26,9 @@ const ArticleCard = (props) => {
         <motion.div
           layout
           key={props.article.id}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 1, opacity: 0 }}
-          transition={{ x: { type: "spring", stiffness: 30 }, duration: 0.8, delay: 0.2}}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ type: "spring", stiffness: 30 }}
         >
           <div
             className={
