@@ -1,7 +1,7 @@
-import FeedPage from "./components/FeedPage";
-import FloatingTextBar from "./components/FloatingTextBar";
-import FlagPage from "./components/FlagPage";
-import { useState, useEffect } from "react";
+import FeedPage from './components/FeedPage';
+import FloatingTextBar from './components/FloatingTextBar';
+import FlagPage from './components/FlagPage';
+import { useState, useEffect } from 'react';
 
 const App = () => {
   const [showFeed, setShowFeed] = useState(true);
@@ -27,12 +27,12 @@ const App = () => {
   return (
     <>
       {showFeed ? (
-        <div className="feed-page">
+        <div className='feed-page'>
           <FloatingTextBar />
           <FeedPage />
         </div>
       ) : (
-        <div className="video-page">
+        <div className='video-page'>
           <FlagPage />
         </div>
       )}

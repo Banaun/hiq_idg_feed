@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import ArticleCard from "./ArticleCard";
+import React, { useState, useEffect } from 'react';
+import ArticleCard from './ArticleCard';
+import { AnimatePresence } from 'framer-motion';
 
 const FeedPage = () => {
   const [articleList, setArticleList] = useState([]);
@@ -10,7 +11,7 @@ const FeedPage = () => {
   const getArticles = async () => {
     let articles = [];
 
-    let url = "https://behiqfeed.azurewebsites.net/items";
+    let url = 'https://behiqfeed.azurewebsites.net/items';
     let response = await fetch(url, {
       mode: 'cors',
     });
@@ -20,6 +21,8 @@ const FeedPage = () => {
     }
     setArticleList(articles);
     setShortArticleList(articles.slice(0, 16));
+
+    console.log(articles);
   };
 
   /*
@@ -45,14 +48,12 @@ const FeedPage = () => {
   //Interval for updating the articleList array
   useEffect(() => {
     const interval = setInterval(() => {
-
       //Remove the first 4 items from articleList
       let newArticleList = [...articleList];
       newArticleList.splice(0, 4);
       setArticleList(newArticleList);
       setShortArticleList(newArticleList.slice(0, 16));
-
-    }, 25000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [articleList]);
@@ -66,57 +67,67 @@ const FeedPage = () => {
     }
 
     return result;
-  }
+  };
 
   //Create array with 100 numbers (0-99)
-  const articlesLengthArr = Array(16).fill().map((_, i) => i);
+  const articlesLengthArr = Array(16)
+    .fill()
+    .map((_, i) => i);
   //Populate first, second, third and fourth columns
-  const firstColumn = getEveryNth(articlesLengthArr, 0, 4)
-  const secondColumn = getEveryNth(articlesLengthArr, 1, 4)
-  const thirdColumn = getEveryNth(articlesLengthArr, 2, 4)
-  const fourthColumn = getEveryNth(articlesLengthArr, 3, 4)
+  const firstColumn = getEveryNth(articlesLengthArr, 0, 4);
+  const secondColumn = getEveryNth(articlesLengthArr, 1, 4);
+  const thirdColumn = getEveryNth(articlesLengthArr, 2, 4);
+  const fourthColumn = getEveryNth(articlesLengthArr, 3, 4);
 
   return (
-    <div className="masonry-grid">
-      <div className="masonry-grid-column">
-        {shortArticleList.map((article, index) => (
-          <ArticleCard
-            key={article.id}
-            article={article}
-            index={index}
-            column={firstColumn}
-          />
-        ))}
+    <div className='masonry-grid'>
+      <div className='masonry-grid-column'>
+        <AnimatePresence>
+          {shortArticleList.map((article, index) => (
+            <ArticleCard
+              key={article.id}
+              article={article}
+              index={index}
+              column={firstColumn}
+            />
+          ))}
+        </AnimatePresence>
       </div>
-      <div className="masonry-grid-column">
-        {shortArticleList.map((article, index) => (
-          <ArticleCard
-            key={article.id}
-            article={article}
-            index={index}
-            column={secondColumn}
-          />
-        ))}
+      <div className='masonry-grid-column'>
+        <AnimatePresence>
+          {shortArticleList.map((article, index) => (
+            <ArticleCard
+              key={article.id}
+              article={article}
+              index={index}
+              column={secondColumn}
+            />
+          ))}
+        </AnimatePresence>
       </div>
-      <div className="masonry-grid-column">
-        {shortArticleList.map((article, index) => (
-          <ArticleCard
-            key={article.id}
-            article={article}
-            index={index}
-            column={thirdColumn}
-          />
-        ))}
+      <div className='masonry-grid-column'>
+        <AnimatePresence>
+          {shortArticleList.map((article, index) => (
+            <ArticleCard
+              key={article.id}
+              article={article}
+              index={index}
+              column={thirdColumn}
+            />
+          ))}
+        </AnimatePresence>
       </div>
-      <div className="masonry-grid-column">
-        {shortArticleList.map((article, index) => (
-          <ArticleCard
-            key={article.id}
-            article={article}
-            index={index}
-            column={fourthColumn}
-          />
-        ))}
+      <div className='masonry-grid-column'>
+        <AnimatePresence>
+          {shortArticleList.map((article, index) => (
+            <ArticleCard
+              key={article.id}
+              article={article}
+              index={index}
+              column={fourthColumn}
+            />
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   );
