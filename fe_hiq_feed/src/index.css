@@ -148,18 +148,17 @@ body {
   height: 4rem;
   top: 0;
   left: 0;
-  width: 100%;
+  contain: content;
 }
 
 .floating-text {
   display: flex;
   flex-direction: row;
   height: inherit;
-  overflow: hidden;
   align-items: center;
   white-space: nowrap;
-  clear: both;
-  float: left;
+  width: fit-content;
+  animation: move 600s linear infinite;
 }
 
 .floating-text p {
@@ -206,5 +205,14 @@ body {
 
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }

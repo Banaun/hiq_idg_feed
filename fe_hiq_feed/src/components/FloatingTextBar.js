@@ -16,7 +16,7 @@ const FloatingTextBar = () => {
     for (let i = 0; i < responseAsJson.length; i++) {
       headlines.push(responseAsJson[i]);
     }
-    let repeatedHeadlines = Array(5).fill(headlines).flat();
+    let repeatedHeadlines = Array(4).fill(headlines).flat();
 
     setHeadlineList(repeatedHeadlines);
   };
@@ -25,23 +25,23 @@ const FloatingTextBar = () => {
     getHeadlines();
   }, []);
 
-  useEffect(() => {
-    animate(headlines);
-  }, [headlines]);
+  //   useEffect(() => {
+  //     animate(headlines);
+  //   }, [headlines]);
 
-  function animate(headlines) {
-    let elementWidth = headlines.current.offsetWidth;
-    let parentWidth = headlines.current.parentElement;
-    let flag = 0;
+  //   function animate(headlines) {
+  //     let elementWidth = headlines.current.offsetWidth;
+  //     let parentWidth = headlines.current.parentElement;
+  //     let flag = 0;
 
-    setInterval(() => {
-      headlines.current.style.marginLeft = --flag + 'px';
+  //     setInterval(() => {
+  //       headlines.current.style.marginLeft = --flag + 'px';
 
-      if (elementWidth === -flag) {
-        flag = parentWidth;
-      }
-    }, 20);
-  }
+  //       if (elementWidth === -flag) {
+  //         flag = parentWidth;
+  //       }
+  //     }, 20);
+  //   }
 
   return (
     <div className='floating-text-header'>
