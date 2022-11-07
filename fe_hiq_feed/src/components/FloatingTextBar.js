@@ -37,7 +37,7 @@ const FloatingTextBar = () => {
     setInterval(() => {
       headlines.current.style.marginLeft = --flag + 'px';
 
-      if (elementWidth == -flag) {
+      if (elementWidth === -flag) {
         flag = parentWidth;
       }
     }, 20);
