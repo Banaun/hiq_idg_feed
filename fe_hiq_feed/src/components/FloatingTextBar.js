@@ -61,7 +61,9 @@ const FloatingTextBar = () => {
                 {headline.title}
               </p>
             )}
-            <p style={{ fontWeight: 'bold' }}>&nbsp;&nbsp;{'|'}&nbsp;&nbsp;</p>
+            <p key={`separator${headline.id}`} style={{ fontWeight: 'bold' }}>
+              &nbsp;&nbsp;{'|'}&nbsp;&nbsp;
+            </p>
           </>
         ))}
       </div>

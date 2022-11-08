@@ -5,25 +5,6 @@ import { AnimatePresence } from 'framer-motion';
 const FeedPage = () => {
   const [articleList, setArticleList] = useState([]);
   const [shortArticleList, setShortArticleList] = useState([]);
-  //const [categoryList, setCategoryList] = useState([]);
-
-  //Fetch articles from backend and populate the articleList
-  const getArticles = async () => {
-    let articles = [];
-
-    let url = 'https://behiqfeed.azurewebsites.net/items';
-    let response = await fetch(url, {
-      mode: 'cors',
-    });
-    let responseAsJson = await response.json();
-    for (let i = 0; i < responseAsJson.length; i++) {
-      articles.push(responseAsJson[i]);
-    }
-    setArticleList(articles);
-    setShortArticleList(articles.slice(0, 16));
-
-    console.log(articles);
-  };
 
   /*
   //Fetch categories from backend and populate the categoryList
@@ -41,6 +22,22 @@ const FeedPage = () => {
   */
 
   useEffect(() => {
+    //Fetch articles from backend and populate the articleList
+    const getArticles = async () => {
+      let articles = [];
+
+      let url = 'https://behiqfeed.azurewebsites.net/items';
+      let response = await fetch(url, {
+        mode: 'cors',
+      });
+      let responseAsJson = await response.json();
+      for (let i = 0; i < responseAsJson.length; i++) {
+        articles.push(responseAsJson[i]);
+      }
+      setArticleList(articles);
+      setShortArticleList(articles.slice(0, 16));
+    };
+
     getArticles();
     //getCategories();
   }, []);
