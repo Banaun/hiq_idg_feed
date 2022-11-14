@@ -1,17 +1,31 @@
 using System.Xml;
 using System.ServiceModel.Syndication;
 
-//Fetch the rss feed (100 latest news)
-string url100 = "http://www.idg.se/rss/100+senaste?noredirect=true";
-XmlReader reader = XmlReader.Create(url100);
-SyndicationFeed feed100 = SyndicationFeed.Load(reader);
-reader.Close();
+// //Fetch the rss feed (20 latest news)
+// string urlLatest = "http://www.idg.se/rss/nyheter?noredirect=true";
+// reader = XmlReader.Create(urlLatest);
+// SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
+// reader.Close();
 
-//Fetch the rss feed (20 latest news)
-string urlLatest = "http://www.idg.se/rss/nyheter?noredirect=true";
-reader = XmlReader.Create(urlLatest);
-SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
-reader.Close();
+private static SyndicationFeed Get100() {
+    //Fetch the rss feed (100 latest news)
+    string url100 = "http://www.idg.se/rss/100+senaste?noredirect=true";
+    XmlReader reader = XmlReader.Create(url100);
+    SyndicationFeed feed100 = SyndicationFeed.Load(reader);
+    reader.Close();
+
+    return feed100;
+}
+
+private static SyndicationFeed Get20() {
+    //Fetch the rss feed (20 latest news)
+    string urlLatest = "http://www.idg.se/rss/nyheter?noredirect=true";
+    reader = XmlReader.Create(urlLatest);
+    SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
+    reader.Close();
+
+    return feedLatest;
+}
 
 //Declare the keyword to search for in articles
 string chosenKeyword = "hiq";
@@ -30,16 +44,24 @@ var app = builder.Build();
 
 //Endpoint for the latest 100 news feed (raw)
 app.MapGet("/", () => {
+
+    SyndicationFeed feed100 = Get100();
+
     return feed100;
 });
 
 //Endpoint for title of the feed
 app.MapGet("/feed-info", () => {
+
+    SyndicationFeed feed100 = Get100();
+
     return feed100.Description.Text;
 });
 
 //Endpoint for all the articles in the 100 lates news feed (formatted)
 app.MapGet("/items", () => {
+
+    SyndicationFeed feed100 = Get100();
 
     List<Article> articles = new List<Article>();
 
@@ -93,6 +115,8 @@ app.MapGet("/items", () => {
 //Endpoint for all categories (tags) in the 100 latest news feed (duplicates removed)
 app.MapGet("/categories", () => {
 
+    SyndicationFeed feed100 = Get100();
+
     List<string> categories = new List<string>();
 
     foreach (SyndicationItem item in feed100.Items) {
@@ -108,6 +132,9 @@ app.MapGet("/categories", () => {
 
 //Endpoint for all headlines in the 20 latest news feed (formatted)
 app.MapGet("/latest", () => {
+
+    SyndicationFeed feedLatest = Get20();
+
     List<Headline> headlines = new List<Headline>();
 
     //Go through each item in the feed and initialize new headline for each item (some formatting needed)
