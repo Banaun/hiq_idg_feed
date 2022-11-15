@@ -8,6 +8,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+  
+env:
+  AZURE_WEBAPP_NAME: "hiq-feed"    # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: "be_hiq_feed"      # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '16.x' 
 
 jobs:
   build:
