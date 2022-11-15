@@ -425,24 +425,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\emilm\\.nuget\\packages\\": {}
+    "C:\\Users\\EmilMo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Coding\\Repos\\hiq_idg_feed\\be_hiq_feed\\be_hiq_feed.csproj",
+      "projectUniqueName": "C:\\Users\\EmilMo\\Repos\\hiq_idg_feed\\be_hiq_feed\\be_hiq_feed.csproj",
       "projectName": "be_hiq_feed",
-      "projectPath": "D:\\Coding\\Repos\\hiq_idg_feed\\be_hiq_feed\\be_hiq_feed.csproj",
-      "packagesPath": "C:\\Users\\emilm\\.nuget\\packages\\",
-      "outputPath": "D:\\Coding\\Repos\\hiq_idg_feed\\be_hiq_feed\\obj\\",
+      "projectPath": "C:\\Users\\EmilMo\\Repos\\hiq_idg_feed\\be_hiq_feed\\be_hiq_feed.csproj",
+      "packagesPath": "C:\\Users\\EmilMo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\EmilMo\\Repos\\hiq_idg_feed\\be_hiq_feed\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\emilm\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\EmilMo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -488,15 +490,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[6.0.8, 6.0.8]"
+            "version": "[6.0.11, 6.0.11]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[6.0.8, 6.0.8]"
+            "version": "[6.0.11, 6.0.11]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[6.0.8, 6.0.8]"
+            "version": "[6.0.11, 6.0.11]"
           }
         ],
         "frameworkReferences": {
@@ -507,7 +509,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

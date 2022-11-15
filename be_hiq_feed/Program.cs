@@ -7,7 +7,7 @@ using System.ServiceModel.Syndication;
 // SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
 // reader.Close();
 
-private static SyndicationFeed Get100() {
+static SyndicationFeed Get100() {
     //Fetch the rss feed (100 latest news)
     string url100 = "http://www.idg.se/rss/100+senaste?noredirect=true";
     XmlReader reader = XmlReader.Create(url100);
@@ -17,9 +17,10 @@ private static SyndicationFeed Get100() {
     return feed100;
 }
 
-private static SyndicationFeed Get20() {
+static SyndicationFeed Get20() {
     //Fetch the rss feed (20 latest news)
     string urlLatest = "http://www.idg.se/rss/nyheter?noredirect=true";
+    XmlReader reader = XmlReader.Create(urlLatest);
     reader = XmlReader.Create(urlLatest);
     SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
     reader.Close();
