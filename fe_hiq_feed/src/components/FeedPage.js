@@ -6,6 +6,9 @@ const FeedPage = () => {
   const [articleList, setArticleList] = useState([]);
   const [shortArticleList, setShortArticleList] = useState([]);
 
+  const url100 = 'http://www.idg.se/rss/100+senaste?noredirect=true';
+  const url20 = 'http://www.idg.se/rss/nyheter?noredirect=true';
+
   /*
   //Fetch categories from backend and populate the categoryList
   const getCategories = async () => {
@@ -27,9 +30,7 @@ const FeedPage = () => {
       let articles = [];
 
       let url = 'https://behiqfeed.azurewebsites.net/items';
-      let response = await fetch(url, {
-        mode: 'cors',
-      });
+      let response = await fetch(url);
       let responseAsJson = await response.json();
       for (let i = 0; i < responseAsJson.length; i++) {
         articles.push(responseAsJson[i]);
