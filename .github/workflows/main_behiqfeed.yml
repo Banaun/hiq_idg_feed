@@ -8,11 +8,6 @@ on:
     branches:
       - main
   workflow_dispatch:
-  
-env:
-  AZURE_WEBAPP_NAME: "hiq-feed"    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: "be_hiq_feed"      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '16.x' 
 
 jobs:
   build:
@@ -29,15 +24,17 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
+        working-directory: "be_hiq_feed"
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        working-directory: "be_hiq_feed"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          path: ${{env.DOTNET_ROOT}}/be_hiq_feed
 
   deploy:
     runs-on: windows-latest
