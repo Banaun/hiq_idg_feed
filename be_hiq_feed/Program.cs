@@ -1,12 +1,6 @@
 using System.Xml;
 using System.ServiceModel.Syndication;
 
-// //Fetch the rss feed (20 latest news)
-// string urlLatest = "http://www.idg.se/rss/nyheter?noredirect=true";
-// reader = XmlReader.Create(urlLatest);
-// SyndicationFeed feedLatest = SyndicationFeed.Load(reader);
-// reader.Close();
-
 static SyndicationFeed Get100() {
     //Fetch the rss feed (100 latest news)
     string url100 = "http://www.idg.se/rss/100+senaste?noredirect=true";
@@ -38,7 +32,7 @@ builder.Services.AddCors(options => {
     options.AddPolicy(name: MyAllowSpecificOrigins, policy => {
         policy.WithOrigins("http://localhost:3000", "http://localhost:8080")
         .AllowAnyHeader()
-        .AllowAnyMethod(); ;
+        .AllowAnyMethod();
     });
 });
 var app = builder.Build();
