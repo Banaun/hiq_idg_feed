@@ -79,6 +79,17 @@ body {
   object-position: 50% 50%;
 }
 
+.article-image-missing-parent {
+  display: flex;
+  justify-content: center;
+}
+
+.article-image-missing {
+  max-width: 50%;
+  height: 10rem;
+  object-position: 50% 50%;
+}
+
 .article-textbox {
   position: relative;
 }

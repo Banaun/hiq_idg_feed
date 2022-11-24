@@ -20,6 +20,8 @@ const ArticleCard = (props) => {
     }
   }
 
+  console.log(props.article.imageUrl);
+
   return (
     <>
       {props.column.includes(props.index) ? (
@@ -37,11 +39,21 @@ const ArticleCard = (props) => {
                 : 'article-card'
             }
           >
-            <img
-              className='article-image'
-              src={props.article.imageUrl}
-              alt={missingImage}
-            />
+            {props.article.imageUrl !== 'Image missing' ? (
+              <img
+                className='article-image'
+                src={props.article.imageUrl}
+                alt={missingImage}
+              />
+            ) : (
+              <div className='article-image-missing-parent'>
+                <img
+                  className='article-image-missing'
+                  src={missingImage}
+                  alt='Image missing'
+                />
+              </div>
+            )}
             <div className='article-textbox'>
               <div className='article-title'>{props.article.title}</div>
               <div className='article-description'>
