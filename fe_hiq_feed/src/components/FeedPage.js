@@ -6,9 +6,6 @@ const FeedPage = () => {
   const [articleList, setArticleList] = useState([]);
   const [shortArticleList, setShortArticleList] = useState([]);
 
-  const url100 = 'http://www.idg.se/rss/100+senaste?noredirect=true';
-  const url20 = 'http://www.idg.se/rss/nyheter?noredirect=true';
-
   /*
   //Fetch categories from backend and populate the categoryList
   const getCategories = async () => {

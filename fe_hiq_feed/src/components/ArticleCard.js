@@ -50,7 +50,7 @@ const ArticleCard = (props) => {
                 <img
                   className='article-image-missing'
                   src={missingImage}
-                  alt='Image missing'
+                  alt='Missing'
                 />
               </div>
             )}
